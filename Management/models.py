@@ -1,6 +1,6 @@
 from django.db import models
 
-class Category:
+class Category(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -17,19 +17,19 @@ class Product(models.Model):
         return self.name
 
 
-class City:
+class City(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
     
-class Inventory:
+class Inventory(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.city
 
-class InventoryProduct:
+class InventoryProduct(models.Model):
     name = models.ForeignKey(Product, on_delete=models.CASCADE)
     Inventory = models.ForeignKey(Inventory, on_delete=models.CASCADE)
     quantity = models.IntegerField()
@@ -40,7 +40,7 @@ class InventoryProduct:
 
 from accounts.models import CustomUser
     
-class Order:
+class Order(models.Model):
     username = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     product = models.ForeignKey(InventoryProduct, on_delete=models.CASCADE)
     quantity = models.IntegerField()
