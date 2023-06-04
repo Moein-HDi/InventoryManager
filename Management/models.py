@@ -32,7 +32,7 @@ class Inventory(models.Model):
 class InventoryProduct(models.Model):
     name = models.ForeignKey(Product, on_delete=models.CASCADE)
     Inventory = models.ForeignKey(Inventory, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(blank=False)
 
     def __str__(self):
         return self.name
@@ -43,7 +43,16 @@ from accounts.models import CustomUser
 class Order(models.Model):
     username = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     product = models.ForeignKey(InventoryProduct, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(blank=False)
+
+    SUBMITTED = 'Submitted'
+    READY_TO_SEND = 'Ready to send'
+    STATUS_CHOICES = [
+        (SUBMITTED, 'ثبت شد'),
+        (READY_TO_SEND, 'آماده ارسال'),
+    ]
+
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=SUBMITTED)
 
     def __str__(self):
         return str ('{name} ({prod} * {quan})'.format(name=self.username.username, prod=self.product, quan=self.quantity))
