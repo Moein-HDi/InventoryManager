@@ -1,0 +1,38 @@
+{% load static %}
+
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>آجیل و خشکبار</title>
+    
+    <link rel="stylesheet" href="{% static 'src/output.css' %}" />
+    
+    <script
+      src="https://kit.fontawesome.com/63c4b57529.js"
+      crossorigin="anonymous"
+    ></script>
+    
+  </head>
+  <body dir="rtl">
+    {% block nav %} {% endblock nav %}
+    <script src="{% static 'jquery.js' %}"></script>
+    
+    <!-- persian numbers -->
+    <script>
+      persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
+      $(".persian-digit").each(function () {
+        for (var i = 0; i <= 9; i++) {
+          var re = new RegExp(i, "g");
+          $(this).html($(this).html().replace(re, persian[i]));
+        }
+      });
+    </script>
+    
+  </body>
+</html>

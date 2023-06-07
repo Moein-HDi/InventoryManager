@@ -1,0 +1,84 @@
+{% extends 'base.html' %} {% block nav %}
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col">
+    
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div class="card-body">
+        <div class="text-2xl font-black text-center text-primary">ثبت نام</div>
+        <form method="post">
+          {% csrf_token %}
+          <div class="text-error text-sm mt-2">{{ form.non_field_errors }}</div>
+          <div class="form-control">
+            <label class="label" for="id_username">
+              <span class="label-text">نام کاربری:</span>
+            </label>
+            <input
+              type="text"
+              class="input input-bordered {% if form.username.errors %}input-error{% endif %}"
+              name="username"
+              autofocus
+              autocapitalize="none"
+              autocomplete="username"
+              maxlength="150"
+              required
+              id="id_username"
+            />
+            <span class="text-error text-sm mt-2">{{ form.username.errors }}</span>
+          </div>
+          
+          <div class="form-control">
+            <label class="label" for="id_city">
+              <span class="label-text">شهر:</span>
+            </label>
+            <select class="select select-bordered" name="city" required id="id_city">
+            <option value="" selected>انتخاب کنید</option>
+
+            </select>
+          </div>
+          
+
+          <div class="form-control">
+            <label class="label" for="id_password1">
+              <span class="label-text">کلمه عبور:</span>
+            </label>
+
+            <input
+              type="password"
+              class="input input-bordered {% if form.password1.errors %}input-error{% endif %}"
+              name="password1"
+              autocomplete="new-password"
+              required
+              id="id_password1"
+            />
+            <div class="text-error text-sm mt-2">{{ form.password1.errors }}</div>
+          </div>
+          <div class="form-control">
+            <label class="label" for="id_password2">
+              <span class="label-text">تکرار کلمه عبور:</span>
+            </label>
+
+            <input
+              type="password"
+              class="input input-bordered {% if form.password2.errors %}input-error{% endif %}"
+              name="password2"
+              autocomplete="new-password"
+              required
+              id="id_password2"
+            />
+            <div class="text-error text-sm mt-2 persian-digit">{{ form.password2.errors }}</div>
+          </div>
+          <label class="label">
+            قبلا ثبت نام کرده اید؟
+            <a href="{% url 'login' %}" class="link link-primary link-hover"
+              >وارد شوید.</a
+            >
+          </label>
+          <div class="form-control mt-6">
+            <button class="btn btn-primary">ثبت نام</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock nav %}

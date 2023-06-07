@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% block nav %}
+
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col">
+    
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div class="card-body">
+        <div class="text-2xl font-black text-center text-primary">ورود</div>
+        <form method="post">
+          {% csrf_token %}
+          <span class="text-error text-sm">{{ form.non_field_errors }}</span>
+          <div class="form-control">
+            <label class="label" for="id_username">
+              <span class="label-text">نام کاربری:</span>
+            </label>
+            <input
+              type="text"
+              class="input input-bordered"
+              name="username"
+              autofocus
+              autocapitalize="none"
+              autocomplete="username"
+              maxlength="150"
+              required
+              id="id_username"
+            />
+            <span class="text-error text-sm mt-2">{{ form.username.errors }}</span>
+          </div>
+          <div class="form-control">
+            <label class="label" for="id_password">
+              <span class="label-text">کلمه عبور:</span>
+            </label>
+            <input
+              type="password"
+              class="input input-bordered"
+              name="password"
+              autocomplete="current-password"
+              required
+              id="id_password"
+            />
+            <span class="text-error text-sm mt-2">{{ form.password.errors }}</span>
+          </div>
+          <label class="label">
+            حساب کاربری ندارید؟
+            <a href="{% url 'signup' %}" class="link link-primary link-hover"
+              >ثبت نام کنید.</a
+            >
+          </label>
+          <div class="form-control mt-6">
+            <button class="btn btn-primary">ورود</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock nav %}

@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Vazirmatn";
+    src: url('fonts/Vazirmatn-VariableFont_wght.ttf') format('truetype');
+    /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+    font-style: normal;
+  }
+  
+  
+  
+  :root {
+    --font-default: "Vazirmatn";
+  }
+  
+  
+  /* ----------------------------------- */
+  
+  body {
+    font-family: var(--font-default);
+  }
+  
+
+  

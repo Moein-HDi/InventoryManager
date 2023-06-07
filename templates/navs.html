@@ -1,0 +1,185 @@
+{% extends 'base.html' %} {% block nav %}
+<!-- drawer -->
+<div class="drawer drawer-mobile">
+  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col bg-base-200 relative">
+    <!-- Page content here -->
+
+    <!-- navbar -->
+    <!-- sticky top-0 z-50 -->
+    <div class="navbar bg-base-100 shadow sticky top-0 z-50">
+      <div class="flex-none">
+        <!-- <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label> -->
+        <label for="my-drawer-2" class="btn btn-square btn-ghost lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block w-5 h-5 stroke-current"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </label>
+      </div>
+      <div class="flex-1">
+        <a
+          href="{% url 'home' %}"
+          class="btn btn-ghost normal-case font-black text-primary text-xl lg:hidden"
+          ><svg
+            id="Layer_1"
+            class="h-6 w-6 ml-2"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1000 1000"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: #a6adbb;
+                }
+                .cls-2 {
+                  fill: #00bf96;
+                }
+              </style>
+            </defs>
+            <path
+              class="cls-1"
+              d="M657.58,90.46H338.64c-137.89,0-250,112.16-250,250.05v112A123.84,123.84,0,0,1,195.35,329.77c5.51-74.2,67.68-132.93,143.29-132.93H657.58a142.33,142.33,0,0,1,47.32,8l50-50a124.14,124.14,0,0,1,36.66-25.4A248.65,248.65,0,0,0,657.58,90.46ZM801.26,459.1V659.46c0,79.22-64.46,143.67-143.68,143.67H338.64C259.42,803.13,195,738.68,195,659.46V610.32l-70.13-70.13a123.64,123.64,0,0,1-36.24-87.65V659.46c0,137.89,112.16,250.08,250.05,250.08H657.58c137.89,0,250.08-112.19,250.08-250.08V352.69Z"
+            />
+            <path
+              class="cls-2"
+              d="M900.28,280.08a68.76,68.76,0,0,1-9,11.13l-90,90-330.07,330a68.81,68.81,0,0,1-97.38,0L195,532.42l-31.18-31.18a68.86,68.86,0,1,1,97.37-97.4L422.49,565.17,793.85,193.81a68.88,68.88,0,0,1,106.43,86.27Z"
+            />
+          </svg>
+          تیک دان</a
+        >
+      </div>
+      <div class="flex-none">
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-square btn-ghost">
+            <i class="fa-solid fa-user"></i>
+          </label>
+
+          <ul
+            tabindex="0"
+            class="dropdown-content menu menu-compact p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li class="p-2 text-center font-bold text-primary">
+              سلام {{ user.username }}!
+            </li>
+            
+            <!-- <li>
+              
+                <span class="label cursor-pointer">
+                  <span class="font-medium"><i class="fa-solid fa-moon ml-2"></i>حالت تاریک</span> 
+                  <input type="checkbox" class="toggle toggle-primary" name="theme" />
+                </span>
+              
+            </li> -->
+            <li>
+              <a href="{% url 'settings' %}"
+                ><i class="fa-solid fa-gear"></i> تنظیمات</a
+              >
+            </li>
+
+            <li>
+              <a href="{% url 'logout' %}" class="text-error"
+                ><i class="fa-solid fa-right-from-bracket"></i> خروج از حساب</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="m-5 lg:m-10">{% block content %} {% endblock content %}</div>
+
+    <!-- <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label> -->
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-2" class="drawer-overlay"></label>
+
+    <ul class="menu w-80 bg-base-100 text-base-content">
+      <!-- navbar -->
+      <!-- sticky top-0 z-50 -->
+      <div class="navbar bg-base-100 shadow sticky top-0 z-50">
+        <div class="flex-none">
+          <!-- <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label> -->
+        </div>
+        <div class="flex-1">
+          <a
+            href="{% url 'home' %}"
+            class="btn btn-ghost normal-case font-black text-primary text-xl"
+            ><svg
+              id="Layer_1"
+              class="h-6 w-6 ml-2"
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1000 1000"
+            >
+              <defs>
+                <style>
+                  .cls-1 {
+                    fill: #a6adbb;
+                  }
+                  .cls-2 {
+                    fill: #00bf96;
+                  }
+                </style>
+              </defs>
+              <path
+                class="cls-1"
+                d="M657.58,90.46H338.64c-137.89,0-250,112.16-250,250.05v112A123.84,123.84,0,0,1,195.35,329.77c5.51-74.2,67.68-132.93,143.29-132.93H657.58a142.33,142.33,0,0,1,47.32,8l50-50a124.14,124.14,0,0,1,36.66-25.4A248.65,248.65,0,0,0,657.58,90.46ZM801.26,459.1V659.46c0,79.22-64.46,143.67-143.68,143.67H338.64C259.42,803.13,195,738.68,195,659.46V610.32l-70.13-70.13a123.64,123.64,0,0,1-36.24-87.65V659.46c0,137.89,112.16,250.08,250.05,250.08H657.58c137.89,0,250.08-112.19,250.08-250.08V352.69Z"
+              />
+              <path
+                class="cls-2"
+                d="M900.28,280.08a68.76,68.76,0,0,1-9,11.13l-90,90-330.07,330a68.81,68.81,0,0,1-97.38,0L195,532.42l-31.18-31.18a68.86,68.86,0,1,1,97.37-97.4L422.49,565.17,793.85,193.81a68.88,68.88,0,0,1,106.43,86.27Z"
+              /></svg
+            >تیک دان</a
+          >
+        </div>
+      </div>
+      <ul class="p-4 menu">
+        <!-- Sidebar content here -->
+        <li>
+          <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> خانه</a>
+        </li>
+        <li>
+          <a href="{% url 'class_all' %}"><i class="fa-solid fa-chalkboard-user"></i> کلاس ها</a>
+        </li>
+        <li>
+          <a href="{% url 'task_all' %}"><i class="fa-solid fa-inbox"></i> کار ها</a>
+        </li>
+        <div class="divider"></div>
+        <li class="menu-title"><span>لیست های کار</span></li>
+
+        {% for list in Lists %}
+
+        <li class="font-semibold">
+          <a href="{% url 'list_detail' list.pk %}"
+            class="persian-digit"><i class="fa-solid fa-bars"></i> {{ list.name }}</a
+          >
+        </li>
+
+        {% empty %}
+        <div class="text-center opacity-20 font-semibold text-base px-5 py-10">
+          <span>شما هیچ لیستی ندارید T-T</span>
+        </div>
+        {% endfor %}
+
+        <li>
+          <a href="{% url 'list_new' %}" class="mt-2 active font-semibold"
+            ><i class="fa-solid fa-plus"></i> ساخت لیست جدید</a
+          >
+        </li>
+      </ul>
+    </ul>
+  </div>
+</div>
+
+{% endblock nav %}
