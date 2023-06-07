@@ -1,0 +1,16 @@
+{% extends 'navs.html' %}
+
+
+{% block content %}
+<div class="p-5 space-y-3">
+    <h1 class="font-bold text-3xl text-primary">انبار جدید</h1> 
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-control [&>*:nth-child(even)]:input [&>*:nth-child(even)]:input-bordered [&>*:nth-child(odd)]:label">
+        {{ form }}
+        </div>
+        <input class="btn btn-success w-full mt-3" type="submit" value="ذخیره">
+    </form> 
+</div>
+
+{% endblock content %}

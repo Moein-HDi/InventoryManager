@@ -1,0 +1,11 @@
+{% extends 'navs.html' %}
+{% block content %} 
+<div class="p-5 space-y-3">
+<h1 class="font-bold text-3xl text-primary">حذف انبار</h1> 
+<form action="" method="post">
+    {% csrf_token %} 
+    <p>آیا از حذف "{{ inventory.name }}" مطمئنید؟</p><br>
+    <input type="submit" value="بله حذف شود" class="btn btn-error w-full">
+</form> 
+</div>
+{% endblock content %}

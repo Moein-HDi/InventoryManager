@@ -26,14 +26,11 @@
             <span class="text-error text-sm mt-2">{{ form.username.errors }}</span>
           </div>
           
-          <div class="form-control">
+          <div class="form-control [&>*:last-child]:select [&>*:last-child]:select-bordered">
             <label class="label" for="id_city">
               <span class="label-text">شهر:</span>
             </label>
-            <select class="select select-bordered" name="city" required id="id_city">
-            <option value="" selected>انتخاب کنید</option>
-
-            </select>
+              {{ form.city }}
           </div>
           
 

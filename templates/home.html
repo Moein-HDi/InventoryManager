@@ -1,0 +1,80 @@
+{% extends 'navs.html' %}
+{% block content %}
+{% if user.is_superuser %}
+    <h1 class="font-extrabold text-primary text-3xl m-10 text-center">به پنل ادمین خوش آمدید</h1>
+    <div class="grid grid-rows-3 grid-flow-col gap-4 mb-10">
+        <div class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h2 class="card-title font-black">دسته بندی</h2>
+              <p>مشاهده و ویرایش دسته بندی محصولات</p>
+              <div class="card-actions justify-end">
+                <a href="{% url 'category' %}" class="btn btn-primary">مشاهده</a>
+              </div>
+            </div>
+          </div>
+          <div class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h2 class="card-title font-black">محصولات</h2>
+              <p>مشاهده و ویرایش انواع محصولات</p>
+              <div class="card-actions justify-end">
+                <a href="{% url 'product' %}" class="btn btn-primary">مشاهده</a>
+              </div>
+            </div>
+          </div>
+          <div class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h2 class="card-title font-black">شهر ها</h2>
+              <p>مشاهده و ویرایش شهر ها</p>
+              <div class="card-actions justify-end">
+                <a href="{% url 'city' %}" class="btn btn-primary">مشاهده</a>
+              </div>
+            </div>
+          </div>
+          <div class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h2 class="card-title font-black">انبار ها</h2>
+              <p>مشاهده و ویرایش انبار ها</p>
+              <div class="card-actions justify-end">
+                <a href="{% url 'inventory' %}" class="btn btn-primary">مشاهده</a>
+              </div>
+            </div>
+          </div>
+          <div class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h2 class="card-title font-black">موجودی انبار ها</h2>
+              <p>مشاهده و ویرایش موجودی انبار ها</p>
+              <div class="card-actions justify-end">
+                <a href="{% url 'inventoryProduct' %}" class="btn btn-primary">مشاهده</a>
+              </div>
+            </div>
+          </div>
+          <div class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h2 class="card-title font-black">سفارش ها</h2>
+              <p>مشاهده و ویرایش سفارش کاربران</p>
+              <div class="card-actions justify-end">
+                <a href="{% url 'order' %}" class="btn btn-primary">مشاهده</a>
+              </div>
+            </div>
+          </div>
+      </div>
+{% else %}
+<h1 class="font-extrabold text-primary text-3xl m-10 text-center">به فروشگاه خشکبار خوش آمدید!</h1>
+<div class="grid grid-rows-4 grid-flow-col gap-4">
+  {% for p in object_list %}
+  <div class="card w-full bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title font-black text-3xl">{{ p.name }}</h2>
+        <div class="persian-digit text-sm opacity-50 font-black">هر {{p.name.quantity}} گرم</div>
+        <div class="persian-digit font-bold text-success text-2xl">{{ p.name.price }} تومان</div>
+        <div class="card-actions justify-end">
+          <a href="{% url 'category' %}" class="btn btn-primary">خرید</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+{% endif %}
+
+{% endblock content %}
+

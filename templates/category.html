@@ -1,0 +1,41 @@
+{% extends 'navs.html' %}
+
+
+{% block content %}
+<div class="p-5 space-y-3">
+    <div class="flex">
+        <div class="grow font-bold text-3xl text-primary">دسته بندی محصولات</div>
+        <div class="flex-none">
+            <a href="{% url 'category_new' %}" class="btn btn-square btn-success"><i class="fa-solid fa-plus text-2xl"></i></a>
+        </div>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="table table-zebra">
+          <!-- head -->
+          <thead>
+            <tr>
+              <th>نام</th>
+              <th class="text-end">عملیات</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for category in object_list %}
+            <!-- row 1 -->
+            <tr>
+              <th>{{ category.name }}</th>
+              <td class="text-end"><a
+                href="{% url 'category_delete' category.pk %}"
+                class="btn btn-square btn-error text-base"
+                ><i class="fa-solid fa-trash-can"></i
+              ></a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+     
+    
+</div>
+
+{% endblock content %}

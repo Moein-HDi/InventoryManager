@@ -1,0 +1,45 @@
+{% extends 'navs.html' %}
+
+
+{% block content %}
+<div class="p-5 space-y-3">
+    <div class="flex">
+        <div class="grow font-bold text-3xl text-primary">دسته بندی محصولات</div>
+        <div class="flex-none">
+            <a href="{% url 'inventoryProduct_new' %}" class="btn btn-square btn-success"><i class="fa-solid fa-plus text-2xl"></i></a>
+        </div>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="table table-zebra">
+          <!-- head -->
+          <thead>
+            <tr>
+              <th>انبار</th>
+              <th>نام محصول</th>
+              <th>تعداد</th>
+              <th class="text-end">عملیات</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for inventoryProduct in object_list %}
+            <!-- row 1 -->
+            <tr>
+              <th>{{ inventoryProduct.inventory }}</th>
+              <th>{{ inventoryProduct.name }}</th>
+              <th class="persian-digit">{{ inventoryProduct.quantity }}</th>
+              <td class="text-end"><a
+                href="{% url 'inventoryProduct_delete' inventoryProduct.pk %}"
+                class="btn btn-square btn-error text-base"
+                ><i class="fa-solid fa-trash-can"></i
+              ></a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+     
+    
+</div>
+
+{% endblock content %}
