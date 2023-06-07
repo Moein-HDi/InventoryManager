@@ -29,4 +29,6 @@ urlpatterns = [
     path('manage/order/<int:pk>/delete/', OrderDeleteView.as_view(), name="order_delete"),
 
     path('', UserProductListView.as_view(), name='home'),
+    path('userOrder/<int:pk>', userOrder, name="userOrder"),
+    path('orderList', UserOrderListView.as_view(), name='orderList'),
 ]

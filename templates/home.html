@@ -66,9 +66,15 @@
       <div class="card-body">
         <h2 class="card-title font-black text-3xl">{{ p.name }}</h2>
         <div class="persian-digit text-sm opacity-50 font-black">هر {{p.name.quantity}} گرم</div>
+        {% if p.quantity > 0 %}
         <div class="persian-digit font-bold text-success text-2xl">{{ p.name.price }} تومان</div>
+        {% else %}
+        <div class="persian-digit font-bold text-error text-2xl">ناموجود</div>
+        {% endif %}
+        
         <div class="card-actions justify-end">
-          <a href="{% url 'category' %}" class="btn btn-primary">خرید</a>
+          
+          <a {% if p.quantity == 0 %} disabled {% endif %} href="{% url 'userOrder' p.pk %}" class="btn btn-primary" >خرید</a>
         </div>
       </div>
     </div>

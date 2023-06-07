@@ -1,0 +1,37 @@
+{% extends 'navs.html' %}
+
+
+{% block content %}
+<div class="p-5 space-y-3">
+    
+        <div class="grow font-bold text-3xl text-primary">سفارشات شما</div>
+        
+    
+
+    <div class="overflow-x-auto">
+        <table class="table table-zebra">
+          <!-- head -->
+          <thead>
+            <tr>
+              <th>محصول</th>
+              <th>تعداد</th>
+              <th>وضعیت</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for p in object_list %}
+            <!-- row 1 -->
+            <tr>
+              <th>{{ p.product.name }}</th>
+              <td>{{ p.quantity }}</td>
+              <td>{{ p.status }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+     
+    
+</div>
+
+{% endblock content %}

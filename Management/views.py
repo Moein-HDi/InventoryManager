@@ -141,4 +141,30 @@ class UserProductListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return InventoryProduct.objects.filter(inventory__city=self.request.user.city)
     
+@login_required(login_url='login')
+def userOrder(request, pk):
+    if request.method == 'POST':
+        product = InventoryProduct.objects.get(id=pk)
+        quantity = request.POST.get('quantity')
+        if product.quantity >= int(quantity):
+            product.quantity -= int(quantity)
+            product.save()
+            newOrder = Order.objects.create(username=request.user, product=product, quantity=quantity)
+            newOrder.save()
+            return render(request, 'order_success.html')
+        else:
+            return render(request, 'order_error.html')
+        
+    else:
+        product = InventoryProduct.objects.get(id=pk)
+        context = {
+                'productInventory': product,
+            }
+        return render(request, 'userOrder.html', context)
 
+class UserOrderListView(LoginRequiredMixin, ListView):
+    model = Order
+    template_name= 'userOrderList.html'
+    
+    def get_queryset(self):
+        return Order.objects.filter(username=self.request.user)

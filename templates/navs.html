@@ -4,6 +4,12 @@
     <a href="{% url 'home' %}" class="btn btn-ghost normal-case text-xl">آجیل و خشکبار</a>
   </div>
   <div class="flex-none">
+    {% if not user.is_superuser %}
+    <a href="{% url 'orderList' %}" class="btn btn-ghost">
+      پیگیری خرید ها
+      <i class="fa-solid fa-basket-shopping"></i>
+    </a>
+    {% endif %}
     <a href="{% url 'logout' %}" class="btn btn-ghost">
       خروج از حساب 
       <i class="fa-solid fa-right-from-bracket"></i>
