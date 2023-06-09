@@ -60,10 +60,10 @@
       </div>
 {% else %}
 <h1 class="font-extrabold text-primary text-3xl m-10 text-center">به فروشگاه خشکبار خوش آمدید!</h1>
-<div class="grid grid-rows-4 grid-flow-col gap-4">
+<div class="flex flex-wrap">
   {% for p in object_list %}
-  <div class="card w-full bg-base-100 shadow-xl">
-      <div class="card-body">
+  <div class="card bg-base-100 shadow-xl m-3">
+      <div class="card-body items-center content-center">
         <h2 class="card-title font-black text-3xl">{{ p.name }}</h2>
         <div class="persian-digit text-sm opacity-50 font-black">هر {{p.name.quantity}} گرم</div>
         {% if p.quantity > 0 %}
@@ -74,7 +74,7 @@
         
         <div class="card-actions justify-end">
           
-          <a {% if p.quantity == 0 %} disabled {% endif %} href="{% url 'userOrder' p.pk %}" class="btn btn-primary" >خرید</a>
+          <a {% if p.quantity == 0 %} disabled {% endif %} href="{% url 'userOrder' p.pk %}" class="btn btn-primary w-full" >خرید</a>
         </div>
       </div>
     </div>

@@ -133,16 +133,17 @@ class OrderDeleteView(LoginRequiredMixin, DeleteView):
 
 #---------------------------------------------------------
 
-
+#users purchaseable products based on their city
 class UserProductListView(LoginRequiredMixin, ListView):
     model = InventoryProduct
     template_name= 'home.html'
     
     def get_queryset(self):
         return InventoryProduct.objects.filter(inventory__city=self.request.user.city)
-    
+
+#user order submit view    
 @login_required(login_url='login')
-def userOrder(request, pk):
+def userOrderSubmitView(request, pk):
     if request.method == 'POST':
         product = InventoryProduct.objects.get(id=pk)
         quantity = request.POST.get('quantity')
@@ -162,6 +163,8 @@ def userOrder(request, pk):
             }
         return render(request, 'userOrder.html', context)
 
+
+#users previous orders view
 class UserOrderListView(LoginRequiredMixin, ListView):
     model = Order
     template_name= 'userOrderList.html'

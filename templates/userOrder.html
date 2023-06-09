@@ -1,16 +1,18 @@
 {% extends 'navs.html' %}
 {% block content %} 
 
-<div class="card w-full bg-base-100 shadow-xl">
-    <div class="card-body">
+<div class="card w-full bg-base-100 shadow-xl mt-10">
+    <div class="card-body content-center items-center">
+      <h2 class="card-title font-black text-3xl mb-4 text-primary">تکمیل خرید</h2>
       <h2 class="card-title font-black text-3xl">{{ productInventory.name }}</h2>
       <div class="persian-digit text-sm opacity-50 font-black">هر {{productInventory.name.quantity}} گرم</div>
       <div class="persian-digit font-bold text-success text-2xl">{{ productInventory.name.price }} تومان</div>
       <div class="card-actions justify-end">
         <form action="" method="post">
             {% csrf_token %}
+            <label class="label">تعداد</label>
             <input name="quantity" type="number" value="1" class="input  input-bordered w-13" />
-            <input type="submit" href="{% url 'userOrder' productInventory.pk %}" class="btn btn-primary" value="خرید">
+            <input type="submit" href="{% url 'userOrder' productInventory.pk %}" class="btn btn-primary" value="تکمیل خرید">
           </form>
       </div>
     </div>
