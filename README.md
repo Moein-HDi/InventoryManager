@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 A django project that manages inventories of a nut shop across the country, their products and customers orders.
-
+### If this project helped you, please consider starring the repostiory ⭐ ^^
 
 ## Demo
 
